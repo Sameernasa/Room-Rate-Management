@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Room Rates</title>
+</head>
+<body>
+    <h1>Room Rates</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Room ID</th>
+                <th>Room Name</th>
+                <th>Default Rate</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for room_rate in room_rates %}
+                <tr>
+                    <td>{{ room_rate.room_id }}</td>
+                    <td>{{ room_rate.room_name }}</td>
+                    <td>{{ room_rate.default_rate }}</td>
+                    <td>
+                        <a href="{% url 'update_room_rate' room_rate.pk %}">Edit</a>
+                        <a href="{% url 'delete_room_rate' room_rate.pk %}">Delete</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{% url 'add_room_rate' %}">Add Room Rate</a>
+</body>
+</html>

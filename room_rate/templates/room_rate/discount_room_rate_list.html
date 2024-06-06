@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Discount Room Rates</title>
+</head>
+<body>
+    <h1>Discount Room Rates</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Room Rate</th>
+                <th>Discount</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for discount_room_rate in discount_room_rates %}
+                <tr>
+                    <td>{{ discount_room_rate.room_rate.room_name }}</td>
+                    <td>{{ discount_room_rate.discount.discount_name }}</td>
+                    <td>
+                        <a href="{% url 'update_discount_room_rate' discount_room_rate.pk %}">Edit</a>
+                        <a href="{% url 'delete_discount_room_rate' discount_room_rate.pk %}">Delete</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{% url 'add_discount_room_rate' %}">Add Discount to Room Rate</a>
+</body>
+</html>

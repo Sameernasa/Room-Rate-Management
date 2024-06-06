@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Discounts</title>
+</head>
+<body>
+    <h1>Discounts</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Discount ID</th>
+                <th>Discount Name</th>
+                <th>Discount Type</th>
+                <th>Discount Value</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for discount in discounts %}
+                <tr>
+                    <td>{{ discount.discount_id }}</td>
+                    <td>{{ discount.discount_name }}</td>
+                    <td>{{ discount.get_discount_type_display }}</td>
+                    <td>{{ discount.discount_value }}</td>
+                    <td>
+                        <a href="{% url 'update_discount' discount.pk %}">Edit</a>
+                        <a href="{% url 'delete_discount' discount.pk %}">Delete</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{% url 'add_discount' %}">Add Discount</a>
+</body>
+</html>

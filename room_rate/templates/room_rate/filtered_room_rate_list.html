@@ -1,0 +1,35 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Filtered Room Rates</title>
+</head>
+<body>
+    <h1>Filtered Room Rates</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Filter</button>
+    </form>
+
+    {% if final_rates %}
+        <h2>Final Rates for Room: {{ room_name }}</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Final Rate</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for rate in final_rates %}
+                    <tr>
+                        <td>{{ rate.date }}</td>
+                        <td>{{ rate.rate }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+</body>
+</html>

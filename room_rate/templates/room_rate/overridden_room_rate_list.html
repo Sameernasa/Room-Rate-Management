@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Overridden Room Rates</title>
+</head>
+<body>
+    <h1>Overridden Room Rates</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Room Rate</th>
+                <th>Overridden Rate</th>
+                <th>Stay Date</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for overridden_room_rate in overridden_room_rates %}
+                <tr>
+                    <td>{{ overridden_room_rate.room_rate }}</td>
+                    <td>{{ overridden_room_rate.overridden_rate }}</td>
+                    <td>{{ overridden_room_rate.stay_date }}</td>
+                    <td>
+                        <a href="{% url 'update_overridden_room_rate' overridden_room_rate.pk %}">Edit</a>
+                        <a href="{% url 'delete_overridden_room_rate' overridden_room_rate.pk %}">Delete</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{% url 'add_overridden_room_rate' %}">Add Overridden Room Rate</a>
+</body>
+</html>
